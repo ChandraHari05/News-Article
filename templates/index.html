@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><b>Express Times</b></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/?query=latest">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="/?query=sports">Sports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/?query=world">World</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/?query=india">India</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="/?query=health">Health</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="/?query=Movies">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/?query=Education">Education</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "aria-current="page"  href="/?query=entertainment">Entertainment</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/?query=latest" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            More News
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/?query=tamilnadu">Tamil Nadu</a></li>
+            <li><a class="dropdown-item" href="/?query=crime">Crime</a></li>
+            <li><a class="dropdown-item" href="/?query=electronics">Electronics</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class='container'>
+        <h1 class='my-4 text-center'><b>Welcome to Express News<b></h1>
+        <form class="form=inline justify-content-center mb-4" method='get' action='/'>
+            <input class="form-control mr-5" type="text" name="query" values="{{query}}" placeholder="Search for news......"/>
+            <button id='search-btn' class="btn btn-primary" type="submit">Search</button>
+    </form>
+        <div class='row'>
+            {% for article in articles %}
+            <div class="">
+                <div class='card mb-4 news-article'>
+                    {% if article.urlToImage %}
+                    <img src='{{article.urlToImage}}' alt='picture' class='card-img-top'>
+                    {% endif %}
+                    <div class='card-body'>
+                        <h5 class='card-title'><a href='{{article.url}}' target='_blank'>{{article.title}}</a></h5>
+                        <p class='card-text'>{{article.description}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
