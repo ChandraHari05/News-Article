@@ -1,7 +1,6 @@
 from flask import Flask,render_template,request
 import requests
 from config import NEW_API_KEY
-NEW_API_KEY="bdf1bc24a5534431a47384837ef16e90"
 
 app=Flask(__name__)
 
@@ -16,4 +15,5 @@ def index():
     return render_template("index.html",articles=filtered_articles,query=query)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+
+    app.run(host-'0.0.0.0',debug=True)
